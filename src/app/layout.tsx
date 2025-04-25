@@ -15,8 +15,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Compound Blue",
-  description: "DeFi lending and borrowing interface for Compound-managed deployments on the Morpho protocol.",
+  title: "Sigma Finance",
+  description: "Sigma Finance gives every DeFi user a quant desk in their pocket—deposit once, let AI hunt the yield.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_URL!),
   openGraph: {
     url: process.env.NEXT_PUBLIC_URL!,

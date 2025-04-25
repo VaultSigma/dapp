@@ -20,7 +20,7 @@ import { AccountVaultPosition, AccoutnVaultPositionHighlight } from "@/component
 import NumberFlow from "@/components/ui/NumberFlow";
 
 export const metadata: Metadata = {
-  title: "Compound Blue | Vault",
+  title: "Sigma Finance | Vault",
 };
 
 export default async function VaultPage({ params }: { params: Promise<{ vaultAddress: string }> }) {

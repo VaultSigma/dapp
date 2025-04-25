@@ -9,19 +9,17 @@ export default function Footer() {
       <div className="mx-6 flex h-full w-full max-w-screen-xl flex-col gap-5 border-t pb-20 pt-6 lg:pb-4 lg:pt-4">
         <div className="flex w-full justify-between">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
-            <LinkExternal href="https://morpho.org/" keepReferrer hideArrow>
-              <PoweredByMorpho />
-            </LinkExternal>
+            
             <LinkExternal
               href="https://paperclip.xyz"
               className="hover:underline hover:brightness-100"
               keepReferrer
               hideArrow
             >
-              Built by Paperclip Labs
+              Originally Developed by Paperclip Labs
             </LinkExternal>
             <LinkExternal
-              href="https://github.com/papercliplabs/compound-blue"
+              href="https://github.com/VaultSigma"
               className="hover:underline hover:brightness-100"
               keepReferrer
               hideArrow
@@ -36,41 +34,15 @@ export default function Footer() {
             >
               Docs
             </LinkExternal>
-            <LinkExternal
-              href="mailto:contact@officesupply.biz"
-              className="hover:underline hover:brightness-100"
-              keepReferrer
-              hideArrow
-            >
-              Support
-            </LinkExternal>
-            <Link href="/privacy" className="hover:underline">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:underline">
-              Terms
-            </Link>
           </div>
           <ModeToggle />
         </div>
         <div className="flex max-w-[680px] flex-col gap-4 text-content-ternary paragraph-sm">
           <span>
-            A joint project between Compound, Morpho, Polygon, and Gauntlet.{" "}
-            <LinkExternal
-              href="https://www.comp.xyz/t/compound-morpho-polygon-collaboration/6306"
-              className="inline underline"
-              hideArrow
-            >
-              Learn more
-            </LinkExternal>
+            This template was specifically forked for the Swell City Buildathon.
           </span>
           <div>
-            Compound Blue is a community-built interface for the Compound DAO. This site is part of the Compound
-            ecosystem but operates independently from{" "}
-            <LinkExternal href="https://compound.finance" className="inline underline" hideArrow>
-              compound.finance
-            </LinkExternal>
-            . Always verify URLs before connecting your wallet.
+            Always verify URLs before connecting your wallet.
           </div>
         </div>
       </div>
