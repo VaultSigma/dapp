@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Compound Blue",
-    short_name: "Compound",
-    description: "DeFi lending and borrowing interface for Compound-managed deployments on the Morpho protocol.",
+    name: "Sigma Finance",
+    short_name: "Sigma",
+    description: "Sigma Finance gives every DeFi user a quant desk in their pocket—deposit once, let AI hunt the yield.",
     start_url: "/",
     icons: [
       {
