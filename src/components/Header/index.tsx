@@ -2,6 +2,7 @@ import Link from "next/link";
 import Nav from "./Nav";
 import ConnectWalletButton from "../ConnectWalletButton";
 import LogoImage from "@/img/logo-transparent.png";
+import Image from "next/image";
 
 export default function Header() {
   return (
@@ -10,9 +11,7 @@ export default function Header() {
         <div className="flex w-full items-center justify-between mt-5">
           <div className="flex items-center gap-4 md:gap-6">
             <Link href="/" className="group flex items-center gap-1">
-              {/* <Logo className="transition-transform duration-300" /> */}
-              <img src={LogoImage.src} alt="Sigma Finance" className="size-24 mt-5" />
-              {/* <LogoCopy /> */}
+              <Image src={LogoImage.src} alt="Sigma Finance" className="size-24 mt-5" />
             </Link>
           </div>
           <div className="hidden md:block">
