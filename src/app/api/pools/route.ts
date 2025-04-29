@@ -7,13 +7,14 @@ const {
     ASTRA_DB_APPLICATION_TOKEN,
 } = process.env;
 
-const client = new DataAPIClient(ASTRA_DB_APPLICATION_TOKEN!);
-const db = client.db(ASTRA_DB_API_ENDPOINT!, {
-    keyspace: ASTRA_DB_NAMESPACE!
-});
-
 export async function GET() {
     try {
+        // Initialize client inside the function
+        const client = new DataAPIClient(ASTRA_DB_APPLICATION_TOKEN!);
+        const db = client.db(ASTRA_DB_API_ENDPOINT!, {
+            keyspace: ASTRA_DB_NAMESPACE!
+        });
+        
         const collection = await db.collection(ASTRA_DB_COLLECTION!);
         
         // Get all pools sorted by APY in descending order
