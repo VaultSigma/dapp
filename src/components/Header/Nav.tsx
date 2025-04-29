@@ -5,12 +5,10 @@ import { Button } from "../ui/button";
 import { ReactNode } from "react";
 import BarChart from "../ui/icons/BarChart";
 import CirclePlus from "../ui/icons/CirclePlus";
-import ArrowFatLineDown from "../ui/icons/ArrowFatLineDown";
 
 const NAV_ITEMS: { href: string; name: string; icon?: ReactNode; isNew?: boolean }[] = [
   { href: "/", name: "Vaults", icon: <BarChart className="fill-content-secondary" /> },
-  { href: "/borrow", name: "Borrow", icon: <CirclePlus className="fill-content-secondary" /> },
-  { href: "/migrate", name: "Migrate", icon: <ArrowFatLineDown className="fill-content-secondary" />, isNew: true },
+  { href: "/borrow", name: "AI Rebalancer", icon: <CirclePlus className="fill-content-secondary" /> },
 ];
 
 export default function Nav() {

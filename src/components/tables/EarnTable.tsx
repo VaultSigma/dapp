@@ -11,6 +11,12 @@ import NumberFlow from "../ui/NumberFlow";
 import { useAccountVaultPositions } from "@/hooks/useAccountVaultPosition";
 import { VaultIdentifier } from "../VaultIdentifier";
 
+// import { ethers } from "ethers";
+
+import { useAccount } from "wagmi";
+
+
+
 interface TableProps {
   vaultSummaries: VaultSummary[];
 }
@@ -88,8 +94,31 @@ export const columns: ColumnDef<VaultSummary & { userDepositsUsd: number }>[] = 
   },
 ];
 
-export default function EarnTable({ vaultSummaries }: TableProps) {
+export default function EarnTable(
+  { vaultSummaries }: TableProps,
+    
+) {
   const { data: accountVaultPositions } = useAccountVaultPositions();
+  
+  const { address } = useAccount();
+
+  // const useVault = (
+  //   vaultAddress: string
+  // ) => {
+
+  //   return useReadContract({
+  //     address: vaultAddress,
+  //     abi: SigmaPoolFacetAbi,
+  //     functionName: "getPoolInfo",
+  //     args: [],
+  //   })
+  // }
+
+
+  // const { data: signer } = useSigner();
+
+  console.log(address);
+
 
   const vaultSummariesWithUserPositions = useMemo(() => {
     return vaultSummaries.map((vault) => {

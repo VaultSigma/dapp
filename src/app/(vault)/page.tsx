@@ -1,7 +1,5 @@
-import EarnTable from "@/components/tables/EarnTable";
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { getVaultSummaries } from "@/data/whisk/getVaultSummaries";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Metadata } from "next";
@@ -32,18 +30,10 @@ export default async function EarnPage() {
         <CardHeader>Vaults</CardHeader>
         <CardContent className="p-0">
           <Suspense fallback={<Skeleton className="m-8 h-[336px]" />}>
-            <EarnTableWrapper />
+            {/* <EarnTableWrapper /> */}
           </Suspense>
         </CardContent>
       </Card>
     </>
   );
 }
-
-async function EarnTableWrapper() {
-  const vaultSummaries = await getVaultSummaries();
-  return <EarnTable vaultSummaries={vaultSummaries ?? []} />;
-}
-
-export const dynamic = "force-static";
-export const revalidate = 60;

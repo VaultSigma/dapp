@@ -11,7 +11,7 @@ export default function Header() {
         <div className="flex w-full items-center justify-between mt-5">
           <div className="flex items-center gap-4 md:gap-6">
             <Link href="/" className="group flex items-center gap-1">
-              <Image src={LogoImage.src} alt="Sigma Finance" className="size-24 mt-5" />
+              <Image src={LogoImage.src} alt="Sigma Finance" width={96} height={96} className="size-24 mt-5" />
             </Link>
           </div>
           <div className="hidden md:block">
