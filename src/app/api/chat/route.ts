@@ -11,32 +11,6 @@ const {
     HUGGINGFACE_API_KEY,
 } = process.env;
 
-// Log environment variables (excluding sensitive tokens)
-console.log('Astra DB Configuration:', {
-    namespace: ASTRA_DB_NAMESPACE,
-    collection: ASTRA_DB_COLLECTION,
-    endpoint: ASTRA_DB_API_ENDPOINT,
-    hasToken: !!ASTRA_DB_APPLICATION_TOKEN,
-    hasCohereKey: !!COHERE_API_KEY,
-    hasHuggingFaceKey: !!HUGGINGFACE_API_KEY
-});
-
-const cohere = new CohereClient({
-    token: COHERE_API_KEY!,
-});
-
-const client = new DataAPIClient(ASTRA_DB_APPLICATION_TOKEN!);
-
-const db = client.db(ASTRA_DB_API_ENDPOINT!, {
-    keyspace: ASTRA_DB_NAMESPACE!
-});
-
-// Initialize HuggingFace embeddings
-const embeddings = new HuggingFaceInferenceEmbeddings({
-    apiKey: HUGGINGFACE_API_KEY,
-    model: "sentence-transformers/all-mpnet-base-v2"
-});
-
 interface ChatMessage {
     role: 'user' | 'assistant';
     content: string;
@@ -49,6 +23,32 @@ interface CohereMessage {
 
 export async function POST(req: Request) {
     try {
+        // Log environment variables (excluding sensitive tokens)
+        console.log('Astra DB Configuration:', {
+            namespace: ASTRA_DB_NAMESPACE,
+            collection: ASTRA_DB_COLLECTION,
+            endpoint: ASTRA_DB_API_ENDPOINT,
+            hasToken: !!ASTRA_DB_APPLICATION_TOKEN,
+            hasCohereKey: !!COHERE_API_KEY,
+            hasHuggingFaceKey: !!HUGGINGFACE_API_KEY
+        });
+
+        // Initialize clients inside the function
+        const cohere = new CohereClient({
+            token: COHERE_API_KEY!,
+        });
+
+        const client = new DataAPIClient(ASTRA_DB_APPLICATION_TOKEN!);
+        const db = client.db(ASTRA_DB_API_ENDPOINT!, {
+            keyspace: ASTRA_DB_NAMESPACE!
+        });
+
+        // Initialize HuggingFace embeddings
+        const embeddings = new HuggingFaceInferenceEmbeddings({
+            apiKey: HUGGINGFACE_API_KEY,
+            model: "sentence-transformers/all-mpnet-base-v2"
+        });
+
         const { messages } = await req.json() as { messages: ChatMessage[] };
 
         const latestMessage = messages[messages.length - 1];
@@ -98,11 +98,10 @@ export async function POST(req: Request) {
             - Quote Token: ${poolInfo.quoteToken}
             - APY: ${poolInfo.apy}%
             - Last Updated: ${poolInfo.timestamp || 'N/A'}
+            - Details: ${text}`;
+            });
 
-            ${text}`;
-            }).join("\n\n");
-
-            docContext = docMap;
+            docContext = docMap.join("\n\n");
             console.log('Generated context length:', docContext.length);
         } catch (err) {
             console.error('Astra DB Error:', err);

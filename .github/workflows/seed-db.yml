@@ -18,10 +18,10 @@ jobs:
           node-version: '20'
           
       - name: Install dependencies
-        run: npm ci
+        run: bun install
         
       - name: Run seed script
-        run: npm run seed
+        run: bun run seed
         env:
           ASTRA_DB_NAMESPACE: ${{ secrets.ASTRA_DB_NAMESPACE }}
           ASTRA_DB_COLLECTION: ${{ secrets.ASTRA_DB_COLLECTION }}
